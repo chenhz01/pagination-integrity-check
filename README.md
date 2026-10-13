@@ -2,6 +2,8 @@
 
 pagination-integrity-check reconciles collected pagination responses before you trust the dataset: it detects missing pages, duplicate pages, overlapping ids, cursor chain breaks, and cycles — for both offset and cursor APIs — and emits a reconciliation summary. Feed it a JSON array or JSONL of page records. Confidence: High (≥80%) for all thirteen rules, per the 65-case suite.
 
+<p align="center"><img src="docs/demo.gif" alt="demo" width="720"></p>
+
 ## Problem
 
 Crawling a paginated API looks trivial and fails quietly: a page times out and you never notice the gap; an API re-serves page 3 as page 4 and your dataset doubles rows; a cursor loop revisits the same token forever while your scraper happily collects the same 500 records 40 times. The corruption is discovered weeks later by a confused analyst — or never.
